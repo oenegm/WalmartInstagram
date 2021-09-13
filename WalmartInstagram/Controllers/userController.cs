@@ -9,7 +9,6 @@ namespace WalmartInstagram.Controllers
 {
     public class userController : Controller
     {
-        // GET: user
         instagramContext db = new instagramContext();
         public ActionResult signUp()
         {
