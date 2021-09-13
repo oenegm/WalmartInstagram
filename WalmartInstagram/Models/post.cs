@@ -23,7 +23,7 @@ namespace WalmartInstagram.Models
         public string picture { get; set; }
 
         public int postID { get; set; }
-
+        
         public int catID { get; set; }
 
         public virtual category category { get; set; }
