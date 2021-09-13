@@ -17,15 +17,20 @@ namespace WalmartInstagram.Models
         public string Title { get; set; }
 
         [Required]
+        [Display(Name = "Caption or Content")]
         public string postContent { get; set; }
 
         [Required]
+        [Display(Name = "Upload Picture")]
         public string picture { get; set; }
 
         public int postID { get; set; }
         
         public int catID { get; set; }
 
+        [Required]
+        [Column(TypeName = "date")]
+        public DateTime date { get; set; }
         public virtual category category { get; set; }
 
         public virtual user user { get; set; }

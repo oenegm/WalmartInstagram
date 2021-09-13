@@ -180,12 +180,12 @@
     <Content Include="Views\user\signIn.cshtml" />
     <Content Include="Views\user\signUp.cshtml" />
     <Content Include="Views\user\profile.cshtml" />
+    <Content Include="Views\post\addPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Attach\pfp\" />
     <Folder Include="Attach\postp\" />
-    <Folder Include="Views\post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

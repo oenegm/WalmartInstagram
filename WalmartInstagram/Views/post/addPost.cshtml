@@ -1,0 +1,37 @@
+﻿@model post
+@{
+    ViewBag.Title = "Post";
+}
+
+<h2>Post</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <table width="100%">
+        <tr>
+            <td>@Html.LabelFor(n => n.Title)</td>
+            <td>@Html.TextBoxFor(n => n.Title, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(n => n.Title, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.postContent)</td>
+            <td>@Html.TextAreaFor(n => n.postContent, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(n => n.postContent, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.picture)</td>
+            <td> <input type="file" name="img" /> </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.catID)</td>
+            <td>@Html.DropDownListFor(n => n.catID, (SelectList)ViewBag.cat, new { @class = "form-control" }) </td>
+            <td>@Html.ValidationMessageFor(n => n.postContent, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="save" class="btn btn-primary" /> </td>
+            <td></td>
+        </tr>
+
+    </table>
+</form>

@@ -25,7 +25,7 @@ namespace WalmartInstagram.Controllers
                 return View();
 
             }
-
+            // problem with repeated filename
             img.SaveAs(Server.MapPath("~/attach/pfp/" + img.FileName));
             s.profilePic = img.FileName;
 
