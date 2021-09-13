@@ -176,11 +176,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\user\signUp.cshtml" />
     <Content Include="Views\user\signIn.cshtml" />
+    <Content Include="Views\user\signUp.cshtml" />
+    <Content Include="Views\user\profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Attach\pfp\" />
+    <Folder Include="Attach\postp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

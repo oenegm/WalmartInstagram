@@ -1,12 +1,9 @@
 ﻿@model user
 @{
-    ViewBag.Title = "signUp";
+    ViewBag.Title = "Sign Up";
 }
 
-<h2>signUp</h2>
-
 <h2>Sign up</h2>
-
 <form method="post" enctype="multipart/form-data">
     <table width="80%">
         <tr>
@@ -43,6 +40,11 @@
             <td>@Html.LabelFor(n => n.confirmPassword)</td>
             <td>@Html.PasswordFor(n => n.confirmPassword, new { @class = "form-control" })</td>
             <td>@Html.ValidationMessageFor(n => n.confirmPassword, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(n => n.profilePic)</td>
+            <td> <input type="file" name="img" /></td>
+            <td></td>
         </tr>
         <tr>
             <td></td>

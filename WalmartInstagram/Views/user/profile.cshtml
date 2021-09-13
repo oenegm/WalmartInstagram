@@ -1,0 +1,29 @@
+﻿@model user
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Welcome, @Model.firstName</h2>
+
+<table width="100%" style="font-size:20px;">
+    <tr>
+        <td>
+            <br /> <br />
+            Username: @Model.username
+            <br /> <br />
+            Full Name: @Model.lastName, @Model.firstName
+            <br /> <br />
+            E-mail: @Model.email
+            <br /> <br />
+            Phone Number: +20 @Model.phone
+            <br /> <br />
+            Birth Date: @Model.dateOfBirth.Month/@Model.dateOfBirth.Day/@Model.dateOfBirth.Year
+            <br /> <br />
+            Age: @(DateTime.Now.Year-Model.dateOfBirth.Year) years old
+        </td>
+        <td>
+            <img src="~/attach/pfp/@Model.profilePic" width="200" height="200"/>
+
+        </td>
+    </tr>
+</table>
