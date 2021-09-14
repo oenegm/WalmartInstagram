@@ -41,5 +41,10 @@ namespace WalmartInstagram.Controllers
 
             return View();
         }
+
+        public ActionResult myposts()
+        {
+            return View();
+        }
     }
 }

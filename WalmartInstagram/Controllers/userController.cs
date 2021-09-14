@@ -72,7 +72,7 @@ namespace WalmartInstagram.Controllers
             return View(s);
         }
 
-        public ActionResult logout()
+        public ActionResult signOut()
         {
             Session["username"] = null;
             return RedirectToAction("signIn");
