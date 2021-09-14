@@ -1,0 +1,30 @@
+﻿@model post
+@{
+    ViewBag.Title = "details";
+}
+
+<h1>@Model.Title</h1>
+<div style=" text-align:center">
+    <img src="@Model.picture" width="500" height="400" />
+</div>
+<br />
+<br />
+<p style="font-size:18px; color:#312929">
+    @Model.postContent
+</p>
+<br />
+<br />
+<p style="font-size:10px; color:#808080">
+
+    <table width="80%">
+        <tr>
+            <td> Catagory: @Model.category.categoryName</td>
+            <td></td>
+            <td> Time:@Model.date</td>
+            <td></td>
+            <td>
+                Author:@Model.writerUsername
+            </td>
+        </tr>
+    </table>
+</p>

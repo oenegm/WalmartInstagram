@@ -182,6 +182,8 @@
     <Content Include="Views\user\profile.cshtml" />
     <Content Include="Views\post\addPost.cshtml" />
     <Content Include="Views\post\myposts.cshtml" />
+    <Content Include="Views\post\allposts.cshtml" />
+    <Content Include="Views\post\details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

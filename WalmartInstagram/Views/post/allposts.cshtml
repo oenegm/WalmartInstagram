@@ -1,0 +1,27 @@
+﻿@model List<post>
+@{
+    ViewBag.Title = "allposts";
+}
+
+<h2>Home</h2>
+
+@foreach (var item in Model)
+{
+    <div style=" font-size:22px; color:#282548 ; font-weight:bold;">
+        @item.Title
+    </div>
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="70%" style=" font-size:18px;">@item.postContent</td>
+                <td width="30%"> <img src="~/Attach/postp/@item.postID" width="200" height="200" /> </td>
+            </tr>
+            <tr>
+                <td width="70%" style="font-size:10px; color:#988080"> Catagory: @item.category.categoryName, Time:@item.date, Author: @item.writerUsername </td>
+                <td width="30%">
+                    @Html.ActionLink("read more ..", "details", new { id = item.postID })
+                </td>
+            </tr>
+        </table>
+    </div>
+}
