@@ -44,7 +44,12 @@ namespace WalmartInstagram.Controllers
 
         public ActionResult myposts()
         {
-            return View();
+            if (Session["username"] == null) return RedirectToAction("signIn", "user");
+
+            string username = (string)Session["username"];
+            List<post> ps = db.posts.Where(n => n.writerUsername == username).ToList();
+
+            return View(ps);
         }
     }
 }
