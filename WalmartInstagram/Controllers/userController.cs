@@ -10,11 +10,11 @@ namespace WalmartInstagram.Controllers
     public class userController : Controller
     {
         instagramContext db = new instagramContext();
+
         public ActionResult signUp()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult signUp(user s, HttpPostedFileBase img)
         {
@@ -23,11 +23,13 @@ namespace WalmartInstagram.Controllers
             {
                 ViewBag.status = "Username aleardy exists!!";
                 return View();
-
             }
-            // problem with repeated filename
-            img.SaveAs(Server.MapPath("~/attach/pfp/" + img.FileName));
-            s.profilePic = img.FileName;
+
+            string imgName = (string)Session["username"];
+            string extention = img.ContentType.Contains("image/jpg") ? ".jpg" : ".png";
+
+            img.SaveAs(Server.MapPath("~/attach/pfp/" + imgName + extention));
+            s.profilePic = imgName + extention;
 
             if (ModelState.IsValid)
             {
@@ -44,7 +46,6 @@ namespace WalmartInstagram.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult signIn(user s)
         {
@@ -73,8 +74,7 @@ namespace WalmartInstagram.Controllers
 
         public ActionResult logout()
         {
-            Session["userid"] = null;
-            Session["userid"] = null;
+            Session["username"] = null;
             return RedirectToAction("signIn");
         }
     }

@@ -10,9 +10,10 @@ namespace WalmartInstagram.Controllers
     public class postController : Controller
     {
         instagramContext db = new instagramContext();
+
         public ActionResult addPost()
         {
-            //if (Session["username"] == null) return RedirectToAction("signIn", "user");
+            if (Session["username"] == null) return RedirectToAction("signIn", "user");
 
             SelectList st = new SelectList(db.categories.ToList(), "categoryID", "categoryName");
             ViewBag.cat = st;
@@ -22,18 +23,23 @@ namespace WalmartInstagram.Controllers
         [HttpPost]
         public ActionResult addPost(post n, HttpPostedFileBase img)
         {
-            // error with repeated filename
-            img.SaveAs(Server.MapPath("~/attach/postp/" + img.FileName));
+            string imgName = (db.posts.LastOrDefault().postID + 1).ToString(); // change this shit
+            string extention = img.ContentType.Contains("image/jpg") ? ".jpg" :".png";
 
-            n.picture = "/attach/postp/" + img.FileName;
+            img.SaveAs(Server.MapPath("~/attach/postp/" + imgName + extention));
+            n.picture = imgName + extention;
             n.writerUsername = (string)Session["username"];
-
             n.date = DateTime.Now;
 
-            db.posts.Add(n);
-            db.SaveChanges();
-            // change this to myposts later
-            return RedirectToAction("profile", "user");
+            if (ModelState.IsValid)
+            {
+                db.posts.Add(n);
+                db.SaveChanges();
+                // change this to myposts later
+                return RedirectToAction("profile", "user");
+            }
+
+            return View();
         }
     }
 }
