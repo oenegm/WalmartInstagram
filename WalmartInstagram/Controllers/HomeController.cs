@@ -10,19 +10,19 @@ namespace WalmartInstagram.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("allposts", "post");
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About Us.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Us.";
 
             return View();
         }
