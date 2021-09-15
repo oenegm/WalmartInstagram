@@ -43,13 +43,15 @@ namespace WalmartInstagram.Controllers
 
             string username = (string)Session["username"];
             List<post> ps = db.posts.Where(n => n.writerUsername == username).ToList();
-
+            ps.Reverse();
             return View(ps);
         }
 
         public ActionResult allposts()
         {
-            return View(db.posts.ToList());
+            List<post> ps = db.posts.ToList();
+            ps.Reverse();
+            return View(ps);
         }
 
         public ActionResult details(int id)
