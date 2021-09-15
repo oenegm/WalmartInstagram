@@ -25,7 +25,8 @@ namespace WalmartInstagram.Models
         public string picture { get; set; }
 
         public int postID { get; set; }
-        
+
+        [Display(Name = "Category")]
         public int catID { get; set; }
 
         [Required]
