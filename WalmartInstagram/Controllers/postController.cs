@@ -36,7 +36,7 @@ namespace WalmartInstagram.Controllers
                 db.posts.Add(n);
                 db.SaveChanges();
                 // change this to myposts later
-                return RedirectToAction("profile", "user");
+                return RedirectToAction("myposts");
             }
 
             return View();
