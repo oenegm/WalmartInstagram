@@ -23,7 +23,7 @@ namespace WalmartInstagram.Controllers
         [HttpPost]
         public ActionResult addPost(post n, HttpPostedFileBase img)
         {
-            string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();  // change this shit
+            string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
             string extention = img.ContentType.Contains("image/jpg") ? ".jpg" :".png";
 
             img.SaveAs(Server.MapPath("~/attach/postp/" + imgName + extention));
