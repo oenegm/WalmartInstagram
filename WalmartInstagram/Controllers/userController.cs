@@ -25,21 +25,17 @@ namespace WalmartInstagram.Controllers
                 return View();
             }
 
-            string imgName = (string)Session["username"];
-            string extention = img.ContentType.Contains("image/jpg") ? ".jpg" : ".png";
+            string imgName = s.username;
+            string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
 
             img.SaveAs(Server.MapPath("~/attach/pfp/" + imgName + extention));
             s.profilePic = imgName + extention;
 
-            if (ModelState.IsValid)
-            {
-                db.users.Add(s);
-                db.SaveChanges();
 
-                return RedirectToAction("signIn");
-            }
+            db.users.Add(s);
+            db.SaveChanges();
 
-            return View();
+            return RedirectToAction("signIn");
         }
 
         public ActionResult signIn()

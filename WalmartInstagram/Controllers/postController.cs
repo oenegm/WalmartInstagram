@@ -24,22 +24,17 @@ namespace WalmartInstagram.Controllers
         public ActionResult addPost(post n, HttpPostedFileBase img)
         {
             string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
-            string extention = img.ContentType.Contains("image/jpg") ? ".jpg" :".png";
+            string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
 
             img.SaveAs(Server.MapPath("~/attach/postp/" + imgName + extention));
             n.picture = imgName + extention;
             n.writerUsername = (string)Session["username"];
             n.date = DateTime.Now;
 
-            if (ModelState.IsValid)
-            {
-                db.posts.Add(n);
-                db.SaveChanges();
-                
-                return RedirectToAction("myposts");
-            }
+            db.posts.Add(n);
+            db.SaveChanges();
 
-            return View();
+            return RedirectToAction("myposts");
         }
 
         public ActionResult myposts()

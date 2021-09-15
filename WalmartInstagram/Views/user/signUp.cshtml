@@ -57,6 +57,16 @@
             <td><br /></td>
         </tr>
         <tr>
+            <td>@Html.LabelFor(n => n.dateOfBirth)</td>
+            <td><input type="date" name="dateOfBirth" size="40" /></td>
+            <td>@Html.ValidationMessageFor(n => n.email, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td><br /></td>
+            <td><br /></td>
+            <td><br /></td>
+        </tr>
+        <tr>
             <td>@Html.LabelFor(n => n.password)</td>
             <td>@Html.PasswordFor(n => n.password, new { @class = "form-control" })</td>
             <td>@Html.ValidationMessageFor(n => n.password, null, new { @class = "text-danger" })</td>
@@ -88,7 +98,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="register" class="btn btn-primary" /></td>
+            <td><input type="submit" value="Register" class="btn btn-primary" /></td>
             <td> @ViewBag.status</td>
         </tr>
     </table>

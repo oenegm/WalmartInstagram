@@ -30,8 +30,8 @@ namespace WalmartInstagram.Models
         public int catID { get; set; }
 
         [Required]
-        [Column(TypeName = "date")]
         public DateTime date { get; set; }
+
         public virtual category category { get; set; }
 
         public virtual user user { get; set; }
