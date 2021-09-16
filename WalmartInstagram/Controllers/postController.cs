@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -87,7 +88,7 @@ namespace WalmartInstagram.Controllers
             post postIdInTheDataBase = db.posts.Where(n => n.postID == id).FirstOrDefault();
             db.posts.Remove(postIdInTheDataBase);
             db.SaveChanges();
-
+           
             return View(tempPost);
         }
 
