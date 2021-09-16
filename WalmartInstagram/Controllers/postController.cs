@@ -27,8 +27,8 @@ namespace WalmartInstagram.Controllers
             string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
             string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
 
-            img.SaveAs(Server.MapPath("~/attach/postp/" + imgName + extention));
-            n.picture = imgName + extention;
+            img.SaveAs(Server.MapPath("~/attach/postp/" + (string)Session["username"] + imgName + extention));
+            n.picture = (string)Session["username"] + imgName + extention;
             n.writerUsername = (string)Session["username"];
             n.date = DateTime.Now;
 
@@ -66,6 +66,15 @@ namespace WalmartInstagram.Controllers
             post postIdInTheDataBase = db.posts.Where(n => n.postID == id).FirstOrDefault();
             db.posts.Remove(postIdInTheDataBase);
             db.SaveChanges();
+
+            string file_name = postIdInTheDataBase.picture;
+            string path = Server.MapPath("~/Attach/postp/" + file_name);
+            FileInfo file = new FileInfo(path);
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
             return RedirectToAction("myposts");
         }
 
@@ -88,7 +97,15 @@ namespace WalmartInstagram.Controllers
             post postIdInTheDataBase = db.posts.Where(n => n.postID == id).FirstOrDefault();
             db.posts.Remove(postIdInTheDataBase);
             db.SaveChanges();
-           
+
+            string file_name = postIdInTheDataBase.picture;
+            string path = Server.MapPath("~/Attach/postp/" + file_name);
+            FileInfo file = new FileInfo(path);
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
             return View(tempPost);
         }
 
@@ -97,8 +114,8 @@ namespace WalmartInstagram.Controllers
         {
             string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
             string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
-            img.SaveAs(Server.MapPath("~/attach/postp/" + imgName + extention));
-            newPost.picture = imgName + extention;
+            img.SaveAs(Server.MapPath("~/attach/postp/" + (string)Session["username"] + imgName + extention));
+            newPost.picture = (string)Session["username"] + imgName + extention;
 
             newPost.writerUsername = (string)Session["username"];
             newPost.date = DateTime.Now;
