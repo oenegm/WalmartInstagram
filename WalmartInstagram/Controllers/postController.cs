@@ -59,5 +59,15 @@ namespace WalmartInstagram.Controllers
             post s = db.posts.Where(n => n.postID == id).FirstOrDefault();
             return View(s);
         }
+
+        public ActionResult categories()
+        {
+            return View(db.categories.ToList());
+        }
+        public ActionResult specificCategory(string categoryName)
+        {
+            ViewBag.categoryName = categoryName;
+            return View(db.posts.ToList());
+        }
     }
 }

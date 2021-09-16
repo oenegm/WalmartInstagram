@@ -1,0 +1,27 @@
+﻿@model List<category>
+@{
+    ViewBag.Title = "categories";
+}
+
+<h2>Categories</h2>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h2>@Html.ActionLink(item.categoryName, "specificCategory", new { categoryName = item.categoryName })</h2>
+
+        <table width="100%">
+            <tr>
+                <td width="70%" style=" font-size:18px;">@item.categoryAbout</td>
+                <td width="30%">
+                    <img src="~/Attach/logop/@item.categoryPicture" width="200" height="200" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </td>
+            </tr>
+        </table>
+    </div>
+}

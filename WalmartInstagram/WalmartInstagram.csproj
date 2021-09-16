@@ -184,9 +184,12 @@
     <Content Include="Views\post\myposts.cshtml" />
     <Content Include="Views\post\allposts.cshtml" />
     <Content Include="Views\post\details.cshtml" />
+    <Content Include="Views\post\categories.cshtml" />
+    <Content Include="Views\post\specificCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Attach\logop\" />
     <Folder Include="Attach\pfp\" />
     <Folder Include="Attach\postp\" />
   </ItemGroup>
