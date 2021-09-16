@@ -4,7 +4,7 @@
 }
 
 <h2>Welcome, @Model.firstName</h2>
-
+<div style="text-align: right; font-size:18px; color: red;">@Html.ActionLink("Edit Profile", "edit", new { username = Model.username })</div>
 <table width="100%" style="font-size:20px;">
     <tr>
         <td>

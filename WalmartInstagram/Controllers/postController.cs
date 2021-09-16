@@ -60,6 +60,14 @@ namespace WalmartInstagram.Controllers
             return View(s);
         }
 
+        public ActionResult delete(int id)
+        {
+            post postIdInTheDataBase = db.posts.Where(n => n.postID == id).FirstOrDefault();
+            db.posts.Remove(postIdInTheDataBase);
+            db.SaveChanges();
+            return RedirectToAction("myposts");
+        }
+
         public ActionResult categories()
         {
             return View(db.categories.ToList());
@@ -68,6 +76,36 @@ namespace WalmartInstagram.Controllers
         {
             ViewBag.categoryName = categoryName;
             return View(db.posts.ToList());
+        }
+
+        public ActionResult edit(int id)
+        {
+            SelectList st = new SelectList(db.categories.ToList(), "categoryID", "categoryName");
+            ViewBag.cat = st;
+            post tempPost = db.posts.Where(n => n.postID == id).FirstOrDefault();
+
+            post postIdInTheDataBase = db.posts.Where(n => n.postID == id).FirstOrDefault();
+            db.posts.Remove(postIdInTheDataBase);
+            db.SaveChanges();
+
+            return View(tempPost);
+        }
+
+        [HttpPost]
+        public ActionResult edit(post newPost, HttpPostedFileBase img)
+        {
+            string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+            string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
+            img.SaveAs(Server.MapPath("~/attach/postp/" + imgName + extention));
+            newPost.picture = imgName + extention;
+
+            newPost.writerUsername = (string)Session["username"];
+            newPost.date = DateTime.Now;
+
+            db.posts.Add(newPost);
+            db.SaveChanges();
+
+            return RedirectToAction("myposts");
         }
     }
 }

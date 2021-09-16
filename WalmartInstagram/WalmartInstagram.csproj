@@ -186,6 +186,8 @@
     <Content Include="Views\post\details.cshtml" />
     <Content Include="Views\post\categories.cshtml" />
     <Content Include="Views\post\specificCategory.cshtml" />
+    <Content Include="Views\user\edit.cshtml" />
+    <Content Include="Views\post\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

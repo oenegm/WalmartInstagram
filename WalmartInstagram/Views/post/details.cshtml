@@ -18,12 +18,15 @@
 
     <table width="80%">
         <tr>
-            <td> Catagory: @Model.category.categoryName</td>
+            <td> Catagory: @Model.category.categoryName </td>
             <td></td>
-            <td> Time:@Model.date</td>
+            <td> Time: @Model.date </td>
+            <td></td>
+            <td> Author: @Model.writerUsername </td>
             <td></td>
             <td>
-                Author:@Model.writerUsername
+                @Html.ActionLink("Edit", "edit", new { id = Model.postID })|
+                @Html.ActionLink("Delete", "delete", new { id = Model.postID })
             </td>
         </tr>
     </table>

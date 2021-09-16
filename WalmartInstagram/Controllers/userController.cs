@@ -27,10 +27,8 @@ namespace WalmartInstagram.Controllers
 
             string imgName = s.username;
             string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
-
             img.SaveAs(Server.MapPath("~/attach/pfp/" + imgName + extention));
             s.profilePic = imgName + extention;
-
 
             db.users.Add(s);
             db.SaveChanges();
@@ -72,6 +70,25 @@ namespace WalmartInstagram.Controllers
         {
             Session["username"] = null;
             return RedirectToAction("signIn");
+        }
+
+        public ActionResult edit(string username)
+        {
+            user tempUser = db.users.Where(n => n.username == username).FirstOrDefault();
+            return View(tempUser);
+        }
+
+        [HttpPost]
+        public ActionResult edit(user newGuy, HttpPostedFileBase img)
+        {
+            string imgName = newGuy.username;
+            string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
+            img.SaveAs(Server.MapPath("~/attach/pfp/" + imgName + extention));
+            newGuy.profilePic = imgName + extention;
+
+            db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("profile");
         }
     }
 }
