@@ -61,8 +61,13 @@ namespace WalmartInstagram.Controllers
             if (Session["username"] == null) return RedirectToAction("signIn");
 
             string id = (string)Session["username"];
-
             user s = db.users.Where(n => n.username == id).FirstOrDefault();
+
+            DateTime birthday = db.users.Where(n => n.username == id).FirstOrDefault().dateOfBirth;
+            int age = DateTime.Now.Year - birthday.Year;
+            if (DateTime.Now.DayOfYear < birthday.DayOfYear) { age--; }
+            ViewBag.age = age;
+
             return View(s);
         }
 
@@ -77,7 +82,6 @@ namespace WalmartInstagram.Controllers
             user tempUser = db.users.Where(n => n.username == username).FirstOrDefault();
             return View(tempUser);
         }
-
         [HttpPost]
         public ActionResult edit(user newGuy, HttpPostedFileBase img)
         {

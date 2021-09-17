@@ -11,7 +11,7 @@
             <br /> <br />
             Username: @Model.username
             <br /> <br />
-            Full Name: @Model.lastName, @Model.firstName
+            Full Name: @Model.firstName @Model.lastName
             <br /> <br />
             E-mail: @Model.email
             <br /> <br />
@@ -19,11 +19,10 @@
             <br /> <br />
             Birth Date: @Model.dateOfBirth.Month/@Model.dateOfBirth.Day/@Model.dateOfBirth.Year
             <br /> <br />
-            Age: @(DateTime.Now.Year-Model.dateOfBirth.Year) years old
+            Age: @ViewBag.age years old
         </td>
         <td>
             <img src="~/attach/pfp/@Model.profilePic" width="200" height="200" />
-
         </td>
     </tr>
 </table>

@@ -2,8 +2,6 @@
 @{
     ViewBag.Title = "myposts";
 }
-
-
 <br />
 <br />
 <br />
@@ -23,7 +21,7 @@
                 <td width="70%" style="font-size:10px; color:#988080"> Catagory: @item.category.categoryName, Time:@item.date</td>
                 <td width="30%">
                     @Html.ActionLink("Edit", "edit", new { id = item.postID })|
-                    @Html.ActionLink("Delete", "delete", new { id = item.postID })|
+                    @Html.ActionLink("Delete", "delete", new { id = item.postID }, new { onclick = "return confirm('Are you sure you wish to delete this post?');" })|
                     @Html.ActionLink("Details", "details", new { id = item.postID })
                 </td>
             </tr>

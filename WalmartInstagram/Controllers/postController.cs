@@ -85,7 +85,9 @@ namespace WalmartInstagram.Controllers
         public ActionResult specificCategory(string categoryName)
         {
             ViewBag.categoryName = categoryName;
-            return View(db.posts.ToList());
+            List<post> ps = db.posts.Where(n => n.category.categoryName == categoryName).ToList();
+            ps.Reverse();
+            return View(ps);
         }
 
         public ActionResult edit(int id)
@@ -94,17 +96,7 @@ namespace WalmartInstagram.Controllers
             ViewBag.cat = st;
             post tempPost = db.posts.Where(n => n.postID == id).FirstOrDefault();
 
-            post postIdInTheDataBase = db.posts.Where(n => n.postID == id).FirstOrDefault();
-            db.posts.Remove(postIdInTheDataBase);
-            db.SaveChanges();
-
-            string file_name = postIdInTheDataBase.picture;
-            string path = Server.MapPath("~/Attach/postp/" + file_name);
-            FileInfo file = new FileInfo(path);
-            if (file.Exists)
-            {
-                file.Delete();
-            }
+            Session["postID"] = id;
 
             return View(tempPost);
         }
@@ -112,6 +104,20 @@ namespace WalmartInstagram.Controllers
         [HttpPost]
         public ActionResult edit(post newPost, HttpPostedFileBase img)
         {
+            // the file delete should happen here
+            int oldPostId = (int)Session["postID"];
+            post postIdInTheDataBase = db.posts.Where(n => n.postID == oldPostId).FirstOrDefault();
+            db.posts.Remove(postIdInTheDataBase);
+            db.SaveChanges();
+            string file_name = postIdInTheDataBase.picture;
+            string path = Server.MapPath("~/Attach/postp/" + file_name);
+            FileInfo file = new FileInfo(path);
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+            Session.Remove("postID");
+
             string imgName = DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
             string extention = img.ContentType.Contains("image/jpeg") ? ".jpg" : ".png";
             img.SaveAs(Server.MapPath("~/attach/postp/" + (string)Session["username"] + imgName + extention));

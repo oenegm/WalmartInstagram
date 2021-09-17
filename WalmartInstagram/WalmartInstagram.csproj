@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\postController.cs" />
     <Compile Include="Controllers\userController.cs" />
@@ -188,6 +189,7 @@
     <Content Include="Views\post\specificCategory.cshtml" />
     <Content Include="Views\user\edit.cshtml" />
     <Content Include="Views\post\edit.cshtml" />
+    <Content Include="Views\admin\dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

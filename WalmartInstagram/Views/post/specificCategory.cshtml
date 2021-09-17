@@ -11,30 +11,29 @@
 <br />
 @foreach (var item in Model)
 {
-    if (@item.category.categoryName == @ViewBag.categoryName)
-    {
-        <div>
-            <table width="100%">
-                <tr>
-                    <td width="70%" style=" font-size:18px;">@item.postContent</td>
-                    <td width="30%"> <img src="~/Attach/postp/@item.picture" width="200" height="200" /> </td>
-                </tr>
-                <tr>
-                    <td width="70%" style="font-size:10px; color:#988080"> Catagory: @item.category.categoryName, Time:@item.date, Author: @item.writerUsername </td>
-                    <td width="30%">
-                        @Html.ActionLink("read more ..", "details", new { postId = item.postID })/
-                        @if (item.writerUsername == (string)Session["username"])
-                        {
-                            @Html.ActionLink("delete", "delete", new { postId = item.postID })
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                    </td>
-                </tr>
-            </table>
-        </div>
-    }
+
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="70%" style=" font-size:18px;">@item.postContent</td>
+                <td width="30%"> <img src="~/Attach/postp/@item.picture" width="200" height="200" /> </td>
+            </tr>
+            <tr>
+                <td width="70%" style="font-size:10px; color:#988080"> Catagory: @item.category.categoryName, Time:@item.date, Author: @item.writerUsername </td>
+                <td width="30%">
+                    @Html.ActionLink("read more ..", "details", new { postId = item.postID })/
+                    @if (item.writerUsername == (string)Session["username"])
+                    {
+                        @Html.ActionLink("delete", "delete", new { postId = item.postID })
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                </td>
+            </tr>
+        </table>
+    </div>
+
 }
