@@ -16,11 +16,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Walmart Instagram", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Walmart Instagram", "allposts", "post", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "allposts", "post")</li>
                     <li>@Html.ActionLink("Categories", "categories", "Post")</li>
                     @if (Session["username"] == null)
                     {
@@ -38,8 +38,7 @@
                         <li>@Html.ActionLink("My Profile", "profile", "user")</li>
                         <li>@Html.ActionLink("Sign out", "signOut", "user")</li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
