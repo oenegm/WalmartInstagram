@@ -1,2 +1,3 @@
 # WalmartInstagram
-A walmart version of Instagram, reddit, or whatever
+Make an admin account with
+username: admin
