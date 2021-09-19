@@ -1,7 +1,36 @@
-﻿
+﻿@model List<user>
 @{
     ViewBag.Title = "usersBrief";
 }
 
 <h2>Users Brief</h2>
 
+<table width="100%" style="font-size:20px;">
+    <tr>
+        <td> <strong> Username </strong> </td>
+        <td> <strong> Full Name </strong> </td>
+        <td> <strong> Email </strong> </td>
+    </tr>
+    <tr>
+        <td> <br /> </td>
+        <td> <br /> </td>
+        <td> <br /> </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.username == "admin")
+        {
+            continue;
+        }
+        <tr>
+            <td> @Html.ActionLink(item.username, "otherProfile", "user", new { otherusername = item.username }, null) </td>
+            <td> @item.firstName @item.lastName </td>
+            <td> <a href="mailto:@item.email">@item.email</a> </td>
+        </tr>
+        <tr>
+            <td> <br /> </td>
+            <td> <br /> </td>
+            <td> <br /> </td>
+        </tr>
+    }
+</table>

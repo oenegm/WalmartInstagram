@@ -20,10 +20,13 @@ namespace WalmartInstagram.Controllers
             List<category> cs = db.categories.ToList();
             return View(cs);
         }
-        // do this
+        
         public ActionResult usersBrief()
         {
-            return View();
+            if ((string)Session["username"] != "admin") return RedirectToAction("signIn", "user");
+
+            List<user> cs = db.users.ToList();
+            return View(cs);
         }
     }
 }

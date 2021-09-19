@@ -32,6 +32,7 @@
                         if ((string)Session["username"] == "admin")
                         {
                             <li>@Html.ActionLink("Dashboard", "dashboard", "admin")</li>
+                            <li>@Html.ActionLink("Users info", "usersBrief", "admin")</li>
                         }
                         <li>@Html.ActionLink("Create new Post", "addPost", "post")</li>
                         <li>@Html.ActionLink("My Posts", "myposts", "post")</li>

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "otherProfile";
+}
+
+<h2>@ViewBag.username Profile</h2>
+
+<table width="100%" style="font-size:20px;">
+    <tr>
+        <td>
+            <br /> <br />
+            First Name: @ViewBag.name
+            <br /> <br />
+            E-mail: <a href="mailto:@ViewBag.email">@ViewBag.email</a>
+            <br /> <br />
+            Age: @ViewBag.age years old
+        </td>
+        <td>
+            <img src="~/attach/pfp/@ViewBag.profilepic" width="200" height="200" />
+        </td>
+    </tr>
+</table>

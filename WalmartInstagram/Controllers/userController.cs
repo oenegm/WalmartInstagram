@@ -79,6 +79,7 @@ namespace WalmartInstagram.Controllers
 
         public ActionResult edit(string username)
         {
+            if (username != (string)Session["username"]) return RedirectToAction("signIn");
             user tempUser = db.users.Where(n => n.username == username).FirstOrDefault();
             return View(tempUser);
         }
@@ -93,6 +94,22 @@ namespace WalmartInstagram.Controllers
             db.Entry(newGuy).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("profile");
+        }
+
+        public ActionResult otherProfile(string otherusername)
+        {
+            if (otherusername == (string)Session["username"]) return RedirectToAction("profile");
+            user otheruser = db.users.Where(n => n.username == otherusername).FirstOrDefault();
+
+            ViewBag.username = otheruser.username;
+            ViewBag.email = otheruser.email;
+            ViewBag.name = otheruser.firstName;
+            ViewBag.profilepic = otheruser.profilePic;
+            int age = DateTime.Now.Year - otheruser.dateOfBirth.Year;
+            if (DateTime.Now.DayOfYear < otheruser.dateOfBirth.DayOfYear) { age--; }
+            ViewBag.age = age;
+
+            return View();
         }
     }
 }
