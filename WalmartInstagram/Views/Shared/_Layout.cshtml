@@ -38,7 +38,6 @@
                         <li>@Html.ActionLink("My Profile", "profile", "user")</li>
                         <li>@Html.ActionLink("Sign out", "signOut", "user")</li>
                     }
-                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -47,7 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Walmart Instagram</p>
+            <p>&copy; @DateTime.Now.Year - Walmart Instagram - @Html.ActionLink("Contact Us", "Contact", "Home")</p>
         </footer>
     </div>
 

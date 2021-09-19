@@ -188,6 +188,7 @@
     <Content Include="Views\user\edit.cshtml" />
     <Content Include="Views\post\edit.cshtml" />
     <Content Include="Views\admin\dashboard.cshtml" />
+    <Content Include="Views\admin\usersBrief.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
